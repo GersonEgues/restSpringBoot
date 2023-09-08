@@ -17,13 +17,12 @@ spring:
     username: example@gmail.com
     password: example
     protocol: smtp
-    default-encoding: utf-8
     properties:
       mail:
         smtp:
           auth: true
           starttls:
-            enable: false # Activa STARTTLS para encriptación TLS, o false para SSL
+            enable: false # Activa STARTTLS para encriptaciï¿½n TLS, o false para SSL
 
   main:
     allow-circular-references: true
