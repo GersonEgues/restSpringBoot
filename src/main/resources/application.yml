@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/comiteDeAgua
+    url: jdbc:postgresql://localhost:5432/modulo3
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -23,6 +23,10 @@ spring:
           auth: true
           starttls:
             enable: false # Activa STARTTLS para encriptaci�n TLS, o false para SSL
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
 
   main:
     allow-circular-references: true

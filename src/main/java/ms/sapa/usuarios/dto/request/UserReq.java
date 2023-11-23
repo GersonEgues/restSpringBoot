@@ -1,0 +1,28 @@
+package ms.sapa.usuarios.dto.request;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import ms.sapa.usuarios.dto.DTO;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+@Getter
+public class UserReq implements Serializable, DTO {
+    @NotNull(message = "userName can't be null")
+    @NotEmpty(message = "userName can't be empty")
+    private String userName;
+
+    @NotNull(message = "password can't be null")
+    @NotEmpty(message = "password can't be empty")
+    private String password;
+
+    @NotNull(message = "email can't be null")
+    @NotEmpty(message = "email can't be empty")
+    private String email;
+
+    @NotNull(message = "createedAt can't be null")
+    @NotEmpty(message = "createedAt can't be empty")
+    private LocalDateTime createedAt;
+}
