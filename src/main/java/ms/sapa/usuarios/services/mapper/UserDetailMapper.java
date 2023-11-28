@@ -13,4 +13,9 @@ public class UserDetailMapper implements CustomMapper<DTO, UserDetail> {
     public UserDetail toEntity(DTO dto) {
         return null;
     }
+
+    @Override
+    public UserDetail merge(UserDetail userDetail, DTO dto) {
+        return null;
+    }
 }
