@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
+import lombok.Setter;
 import ms.sapa.usuarios.dto.DTO;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Getter
+@Setter
 public class UserDetailReq implements Serializable, DTO {
     @NotNull(message = "username can't be null")
     private String firstName;

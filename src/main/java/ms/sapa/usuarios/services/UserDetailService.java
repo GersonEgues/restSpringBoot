@@ -17,4 +17,6 @@ public interface UserDetailService {
     UserDetailRes save(UserDetailReq userDetailReq) throws Exception;
 
     UserDetailRes update(Long id, UserDetailReq userDetailReq) throws Exception;
+
+    void delete(Long userId) throws Exception;
 }

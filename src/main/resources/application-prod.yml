@@ -1,0 +1,32 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/m_prod
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: example@gmail.com
+    password: example
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: false # Activa STARTTLS para encriptaci�n TLS, o false para SSL
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+  main:
+    allow-circular-references: true

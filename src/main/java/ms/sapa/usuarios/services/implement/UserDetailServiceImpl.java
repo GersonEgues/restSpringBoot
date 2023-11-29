@@ -11,7 +11,6 @@ import ms.sapa.usuarios.services.customException.NotFoundException;
 import ms.sapa.usuarios.services.mapper.UserDetailMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -36,8 +35,12 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     @Override
     public UserDetailRes findFromUser(Long id) {
-        Optional<UserDetail> userDetail = userDetailRepository.findFromUser(id);
-        return userDetailMapper.toDto(userDetail.get());
+        UserDetailRes userDetailRes = null;
+        Optional<UserDetail> optionalUserDetail = userDetailRepository.findFromUser(id);
+        if(optionalUserDetail.isPresent()){
+            return userDetailMapper.toDto(optionalUserDetail.get());
+        }
+        return userDetailRes;
     }
 
     @Override
@@ -74,6 +77,20 @@ public class UserDetailServiceImpl implements UserDetailService {
                 throw new NotFoundException("There is not user from id: " + userDetailReq.getUserId());
             }
         } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(Long userId) throws Exception {
+        try {
+            Optional<UserDetail> optionalUserDetail = userDetailRepository.findFromUser(userId);
+            if(optionalUserDetail.isPresent()){
+                userDetailRepository.delete(optionalUserDetail.get());
+            }else{
+                throw new NotFoundException("There is not found user detail for id: " + userId);
+            }
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }

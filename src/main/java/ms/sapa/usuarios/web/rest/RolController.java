@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import ms.sapa.usuarios.domain.entities.Rol;
 import ms.sapa.usuarios.dto.request.RolReq;
 import ms.sapa.usuarios.dto.response.RolRes;
+import ms.sapa.usuarios.dto.response.UserRes;
 import ms.sapa.usuarios.services.RolService;
 import ms.sapa.usuarios.services.implement.RolServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/rol")
@@ -43,5 +45,17 @@ public class RolController {
                                          @Valid @RequestBody RolReq rolReq) throws Exception{
         RolRes rolRes = rolService.update(id,rolReq);
         return ResponseEntity.ok().body(rolRes);
+    }
+
+    @GetMapping("/list-user/{userId}")
+    public ResponseEntity<List<RolRes>> findRolListFromUser(@NotNull @PathVariable(name = "userId") Long userId) {
+        List<RolRes> roleResList = rolService.findRolListFromUser(userId);
+        return ResponseEntity.ok().body(roleResList);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@NotNull @PathVariable(name = "id") Long id) throws Exception {
+        rolService.delete(id);
+        return ResponseEntity.ok().body(null);
     }
 }

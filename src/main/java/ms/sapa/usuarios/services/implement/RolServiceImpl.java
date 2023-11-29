@@ -74,4 +74,26 @@ public class RolServiceImpl implements RolService {
             }
         }
     }
+
+    @Override
+    public List<RolRes> findRolListFromUser(Long userId) {
+        List<Rol> rolList = rolRepository.findRolListFromUser(userId);
+        return rolList.stream()
+                .map(rolMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(Long id) throws Exception {
+        try {
+            Optional<Rol> optionalRol = rolRepository.findById(id);
+            if(optionalRol.isPresent()){
+                rolRepository.delete(optionalRol.get());
+            }else{
+                throw new NotFoundException("There is not rol with id :" + id);
+            }
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }

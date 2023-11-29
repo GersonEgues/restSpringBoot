@@ -8,6 +8,7 @@ import ms.sapa.usuarios.dto.DTO;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class UserReq implements Serializable, DTO {
@@ -26,4 +27,7 @@ public class UserReq implements Serializable, DTO {
     @NotNull(message = "createedAt can't be null")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createedAt;
+
+    private List<UserRolReq> userRolReqList;
+    private UserDetailReq userDetailReq;
 }

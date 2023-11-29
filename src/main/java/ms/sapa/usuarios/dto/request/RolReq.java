@@ -1,6 +1,5 @@
 package ms.sapa.usuarios.dto.request;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +11,5 @@ import java.io.Serializable;
 @Setter
 public class RolReq implements Serializable, DTO {
     @NotNull(message = "name can't be null")
-    @NotEmpty(message = "name can't be empty")
     private String name;
 }

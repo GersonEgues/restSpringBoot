@@ -7,10 +7,12 @@ import java.util.List;
 
 public interface UserService {
     UserRes findById(Long id) throws Exception;
-
+    UserRes findFullDataUserById(Long id) throws Exception;
     List<UserRes> findAll();
-
     UserRes save(UserReq userReq) throws Exception;
-
     UserRes update(Long id, UserReq userReq) throws Exception;
+
+    void delete(Long id) throws Exception;
+
+    UserRes saveFullData(UserReq userReq) throws Exception;
 }

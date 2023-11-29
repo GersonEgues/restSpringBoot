@@ -13,4 +13,6 @@ public interface RolService {
     List<RolRes> findAll();
     RolRes save(RolReq rolReq) throws Exception;
     RolRes update(Long id,RolReq rolReq) throws Exception;
+    List<RolRes> findRolListFromUser(Long userId);
+    void delete(Long id) throws Exception;
 }

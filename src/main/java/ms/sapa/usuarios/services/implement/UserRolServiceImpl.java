@@ -15,6 +15,7 @@ import ms.sapa.usuarios.services.mapper.UserRolMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,7 @@ public class UserRolServiceImpl implements UserRolService {
     }
 
     @Override
+    @Transactional
     public UserRolRes save(UserRolReq userRolReq) throws Exception {
         try {
             UserRol userRol = userRolMapper.toEntity(userRolReq);
